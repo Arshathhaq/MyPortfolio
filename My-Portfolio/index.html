@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSec Student | Security Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberpurple: {
+                            100: '#e0bbff',
+                            200: '#c77dff',
+                            300: '#9d4edd',
+                            400: '#7b2cbf',
+                            500: '#5a189a',
+                            600: '#3c096c',
+                            700: '#240046',
+                        }
+                    },
+                    fontFamily: {
+                        'tech': ['"Share Tech Mono"', 'monospace'],
+                        'cyber': ['"Orbitron"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+        body {
+            background-color: #0a0a1a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .cyber-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.4), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .cyber-btn:hover::before {
+            left: 100%;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 5px rgba(156, 39, 176, 0.7);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #240046 0%, #3c096c 50%, #5a189a 100%);
+        }
+
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .terminal {
+            background-color: rgba(10, 10, 26, 0.8);
+            border: 1px solid #5a189a;
+            border-radius: 5px;
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+        }
+
+        .terminal-header {
+            background-color: #240046;
+            padding: 5px 10px;
+            border-bottom: 1px solid #5a189a;
+        }
+
+        .terminal-body {
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .prompt {
+            color: #9d4edd;
+            margin-right: 10px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #c77dff;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cyber-card {
+            background: rgba(36, 0, 70, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid #5a189a;
+            transition: all 0.3s;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(156, 39, 176, 0.3);
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(156, 39, 176, 0.1) 50%,
+                    transparent 100%);
+            background-size: 100% 8px;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes scan {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 100%;
+            }
+        }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(156, 39, 176, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(156, 39, 176, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .blog-card {
+            transition: all 0.3s;
+            background: rgba(36, 0, 70, 0.2);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(156, 39, 176, 0.3);
+            background: rgba(36, 0, 70, 0.4);
+        }
+
+        .platform-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .medium-badge {
+            background-color: #00ab6c;
+            color: white;
+        }
+
+        .devto-badge {
+            background-color: #0a0a0a;
+            color: white;
+        }
+
+        .hashnode-badge {
+            background-color: #2962ff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="font-sans grid-pattern">
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <nav class="gradient-bg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-cyber glow-text">
+                            <i class="fas fa-user-secret mr-2"></i>CYBERSEC STUDENT
+                        </span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">HOME</a>
+                        <a href="#about"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">ABOUT</a>
+                        <a href="#skills"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">SKILLS</a>
+                        <a href="#projects"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">PROJECTS</a>
+                        <a href="#blogs"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">BLOGS</a>
+                        <a href="#contact"
+                            class="cyber-btn px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-cyberpurple-700">CONTACT</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button
+                        class="mobile-menu-button p-2 rounded-md text-white hover:bg-cyberpurple-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-cyberpurple-700/20 to-cyberpurple-900/80"></div>
+            <div class="absolute inset-0 opacity-30"
+                style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiM5ZDRlZGQiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=');">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+            <div
+                class="hexagon bg-cyberpurple-500/20 w-32 h-32 mx-auto flex items-center justify-center mb-8 border-2 border-cyberpurple-400">
+                <i class="fas fa-terminal text-5xl text-cyberpurple-200"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-cyber font-bold mb-4 glow-text">
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">CYBER
+                    SECURITY</span> STUDENT
+            </h1>
+            <p class="text-xl md:text-2xl text-cyberpurple-200 mb-8 max-w-3xl mx-auto">
+                Passionate about ethical hacking, network security, and cybersecurity. Currently pursuing my
+                degree while building practical skills.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact"
+                    class="cyber-btn bg-cyberpurple-600 hover:bg-cyberpurple-500 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact Me
+                </a>
+                <a href="#projects"
+                    class="cyber-btn bg-transparent border-2 border-cyberpurple-400 hover:bg-cyberpurple-500/20 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center">
+                    <i class="fas fa-laptop-code mr-2"></i> View Projects
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#about" class="text-cyberpurple-300 hover:text-cyberpurple-100 animate-bounce">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-cyberpurple-900 to-cyberpurple-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 id="sectionTitle" class="text-3xl md:text-4xl font-cyber font-bold mb-4 glow-text"></h2>
+                <div class="w-20 h-1 bg-cyberpurple-400 mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <div
+                        class="hexagon bg-cyberpurple-500/20 w-96 h-96 flex items-center justify-center border-2 border-cyberpurple-400 relative overflow-hidden">
+                        <img id="profileImage" src="" alt="Profile"
+                            class="absolute inset-0 w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-cyberpurple-700/30"></div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3">
+                    <h3 id="subtitle" class="text-2xl font-cyber mb-4 text-cyberpurple-200"></h3>
+                    <div id="description" class="text-gray-300 mb-6"></div>
+
+                    <div class="terminal mb-6">
+                        <div class="terminal-header flex items-center">
+                            <div class="flex space-x-2 mr-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-sm font-tech">student@cybersec:~</span>
+                        </div>
+                        <div class="terminal-body min-h-[40vh]">
+                            <p class="text-green-400">$ whoami</p>
+                            <p id="whoami" class="text-cyberpurple-300 mb-4"></p>
+
+                            <p class="text-green-400">$ cat education.txt</p>
+                            <p id="education" class="text-cyberpurple-300 mb-4"></p>
+
+                            <div class="command-line">
+                                <span class="prompt">$</span>
+                                <span class="cursor"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="skills" class="flex flex-wrap gap-4"></div>
+
+                    <div class="mt-8 flex flex-col justify-center">
+                        <a id="cvLink" href="#" target="_blank"
+                            class="cyber-btn bg-cyberpurple-600 hover:bg-cyberpurple-500 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center mb-4">
+                            <i class="fas fa-download mr-2"></i> Breach Into My CV
+                        </a>
+                        <a href="#contact"
+                            class="cyber-btn bg-transparent border-2 border-cyberpurple-400 hover:bg-cyberpurple-500/20 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="aboutMe.js"></script>
+    <script>
+        const jsonData = aboutMe;
+        document.getElementById('sectionTitle').innerHTML = `
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">
+      ${jsonData.sectionTitle.split(" ")[0]}</span> ${jsonData.sectionTitle.split(" ").slice(1).join(" ")}
+      `;
+
+        document.getElementById('subtitle').textContent = jsonData.subtitle;
+        document.getElementById('profileImage').src = jsonData.profileImage;
+
+        const descContainer = document.getElementById('description');
+        jsonData.description.forEach(para => {
+            const p = document.createElement('p');
+            p.textContent = para;
+            p.classList.add("mb-4");
+            descContainer.appendChild(p);
+        });
+
+        document.getElementById('whoami').textContent = jsonData.terminal.whoami;
+        document.getElementById('education').innerHTML = jsonData.terminal.education.join('<br>');
+
+        const skillsContainer = document.getElementById('skills');
+        jsonData.skills.forEach(skill => {
+            const div = document.createElement('div');
+            div.className = "cyber-card px-4 py-3 rounded-lg flex items-center";
+            div.innerHTML = `<i class="${skill.icon} text-cyberpurple-300 mr-2"></i><span class="text-sm">${skill.label}</span>`;
+            skillsContainer.appendChild(div);
+        });
+
+        document.getElementById('cvLink').href = jsonData.cvLink;
+    </script>
+
+
+    <!-- Skills Section -->
+    <script src="mySkills.js"></script>
+    <section id="skills" class="py-20 bg-gradient-to-b from-cyberpurple-700 to-cyberpurple-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-cyber font-bold mb-4 glow-text">
+                    MY <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">SKILLS</span>
+                </h2>
+                <div class="w-20 h-1 bg-cyberpurple-400 mx-auto"></div>
+                <p class="text-cyberpurple-200 max-w-2xl mx-auto mt-4">
+                    Skills I've developed through coursework, personal projects, and CTF competitions
+                </p>
+            </div>
+
+            <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill cards will be injected here -->
+            </div>
+        </div>
+        <script>
+            const skillsData = mySkills;
+            const skillsGrid = document.getElementById('skillsGrid');
+            skillsData.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'cyber-card p-6 rounded-lg';
+
+                // Build all progress items html (there can be multiple)
+                const progressItems = skill.items.map(item => `
+        <div class="mt-4">
+          <div class="flex justify-between mb-1">
+            <span class="text-sm text-cyberpurple-200">${item.name}</span>
+            <span class="text-sm text-cyberpurple-200">${item.level}%</span>
+          </div>
+          <div class="w-full bg-cyberpurple-700 rounded-full h-2">
+            <div class="bg-cyberpurple-400 h-2 rounded-full" style="width: ${item.level}%"></div>
+          </div>
+        </div>
+      `).join('');
+
+                card.innerHTML = `
+        <div class="flex items-center mb-4">
+          <div class="hexagon bg-cyberpurple-600 w-12 h-12 flex items-center justify-center mr-4">
+            <i class="${skill.icon} text-xl text-white"></i>
+          </div>
+          <h3 class="text-xl font-cyber text-cyberpurple-200">${skill.title}</h3>
+        </div>
+        <p class="text-gray-300 mb-4">${skill.description}</p>
+        ${progressItems}
+      `;
+
+                skillsGrid.appendChild(card);
+            });
+        </script>
+    </section>
+
+
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-cyberpurple-900 to-cyberpurple-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-cyber font-bold mb-4 glow-text">
+                    MY <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">PROJECTS</span>
+                </h2>
+                <div class="w-20 h-1 bg-cyberpurple-400 mx-auto"></div>
+                <p class="text-cyberpurple-200 max-w-2xl mx-auto mt-4">
+                    Hands-on projects I've worked on to develop my cybersecurity skills
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+                <!-- Project cards will be inserted here dynamically -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/Arshathhaq" target="_blank"
+                    class="cyber-btn inline-flex items-center px-6 py-3 border border-cyberpurple-400 text-sm font-medium rounded-md text-white bg-cyberpurple-600 hover:bg-cyberpurple-700">
+                    <i class="fas fa-code-branch mr-2"></i> View GitHub
+                </a>
+            </div>
+        </div>
+
+        <script src="myProjects.js"></script>
+        <script>
+            const projectsData = myProjects;
+            document.addEventListener('DOMContentLoaded', () => {
+                const projectsContainer = document.getElementById('projectsContainer');
+                projectsData.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'cyber-card rounded-lg overflow-hidden group';
+                    projectCard.innerHTML = `
+          <div class="relative h-48 overflow-hidden">
+            <img src="${project.image}" alt="${project.alt}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-cyberpurple-900/80 to-transparent"></div>
+            <div class="absolute top-4 right-4">
+              <span class="bg-cyberpurple-600 text-xs px-2 py-1 rounded-full">${project.badge}</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-cyber text-cyberpurple-200 mb-2">${project.title}</h3>
+            <p class="text-gray-300 text-sm mb-4">${project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              ${project.tags.map(tag => `<span class="text-xs bg-cyberpurple-900/50 px-2 py-1 rounded">${tag}</span>`).join('')}
+            </div>
+          </div>
+        `;
+                    projectsContainer.appendChild(projectCard);
+                });
+            });
+        </script>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="py-20 bg-gradient-to-b from-cyberpurple-700 to-cyberpurple-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-cyber font-bold mb-4 glow-text">
+                    MY <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">BLOGS</span>
+                </h2>
+                <div class="w-20 h-1 bg-cyberpurple-400 mx-auto"></div>
+                <p class="text-cyberpurple-200 max-w-2xl mx-auto mt-4">
+                    Articles I've written to share my learning journey and security knowledge
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogsContainer">
+                <!-- Blog cards will be injected here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://medium.com/@arshathhaq97" target="_blank"
+                    class="cyber-btn inline-flex items-center px-6 py-3 border border-cyberpurple-400 text-sm font-medium rounded-md text-white bg-cyberpurple-600 hover:bg-cyberpurple-700">
+                    <i class="fas fa-newspaper mr-2"></i> View All Articles
+                </a>
+            </div>
+        </div>
+
+        <script src="blogsData.js"></script>
+        <script>
+            // Wait until DOM is fully loaded
+            document.addEventListener('DOMContentLoaded', () => {
+                const blogs = blogsData;  // blogsData is loaded from blogsData.js
+
+                // Use the ID selector for easier and safer targeting
+                const blogsContainer = document.getElementById('blogsContainer');
+
+                blogs.forEach(blog => {
+                    const blogCard = document.createElement('a');
+                    blogCard.href = blog.url;
+                    blogCard.target = '_blank';
+                    blogCard.className = 'blog-card rounded-lg overflow-hidden relative';
+                    blogCard.innerHTML = `
+          <div class="platform-badge ${blog.platform}-badge">${blog.platform}</div>
+          <div class="h-48 bg-cover bg-center" style="background-image: url('${blog.image}')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-cyber text-cyberpurple-200 mb-2">${blog.title}</h3>
+            <p class="text-gray-300 text-sm mb-4">${blog.description}</p>
+            <div class="flex items-center text-sm text-cyberpurple-300">
+              <span>Read more →</span>    
+            </div>
+          </div>
+        `;
+                    blogsContainer.appendChild(blogCard);
+                });
+            });
+        </script>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-cyberpurple-700 to-cyberpurple-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-cyber font-bold mb-4 glow-text">
+                    GET IN <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyberpurple-200 to-cyberpurple-400">TOUCH</span>
+                </h2>
+                <div class="w-20 h-1 bg-cyberpurple-400 mx-auto"></div>
+                <p class="text-cyberpurple-200 max-w-2xl mx-auto mt-4">
+                    Interested in collaborating ? Feel free to reach out!
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-center">
+
+                <div class="lg:w-1/2">
+                    <div class="cyber-card p-8 rounded-lg h-full">
+                        <h3 class="text-xl font-cyber text-cyberpurple-200 mb-6">Contact Information</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div
+                                    class="hexagon bg-cyberpurple-600 w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-cyberpurple-300">Email</h4>
+                                    <p class="text-gray-300">arshathul.mh@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="hexagon bg-cyberpurple-600 w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-cyberpurple-300">Location</h4>
+                                    <p class="text-gray-300">Germany</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-12">
+                            <h4 class="text-sm font-medium text-cyberpurple-300 mb-4">CONNECT WITH ME</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/arshath/" target="_blank"
+                                    class="hexagon bg-cyberpurple-700 hover:bg-cyberpurple-600 w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-linkedin-in text-cyberpurple-200"></i>
+                                </a>
+                                <a href="https://github.com/Arshathhaq" target="_blank"
+                                    class="hexagon bg-cyberpurple-700 hover:bg-cyberpurple-600 w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-github text-cyberpurple-200"></i>
+                                </a>
+                                <a href="https://medium.com/@arshathhaq97" target="_blank"
+                                    class="hexagon bg-cyberpurple-700 hover:bg-cyberpurple-600 w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-medium text-cyberpurple-200"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-user-secret text-2xl text-cyberpurple-200 mr-2"></i>
+                    <span class="text-xl font-cyber glow-text">CYBERSEC STUDENT</span>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-cyberpurple-200 hover:text-white">Home</a>
+                    <a href="#about" class="text-cyberpurple-200 hover:text-white">About</a>
+                    <a href="#skills" class="text-cyberpurple-200 hover:text-white">Skills</a>
+                    <a href="#projects" class="text-cyberpurple-200 hover:text-white">Projects</a>
+                    <a href="#blogs" class="text-cyberpurple-200 hover:text-white">Blogs</a>
+                    <a href="#contact" class="text-cyberpurple-200 hover:text-white">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden hidden gradient-bg absolute top-16 left-0 right-0 z-50';
+        mobileMenu.id = 'mobile-menu';
+
+        mobileMenu.innerHTML = `
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">HOME</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">ABOUT</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">SKILLS</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">PROJECTS</a>
+                <a href="#blogs" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">BLOGS</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-cyberpurple-700">CONTACT</a>
+            </div>
+        `;
+
+        document.body.appendChild(mobileMenu);
+
+        mobileMenuButton.addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('block');
+            } else {
+                menu.classList.remove('block');
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Terminal typing effect
+        const commands = [
+            "whoami",
+            "cat education.txt",
+            "ls projects/",
+            "nmap -sV target.com",
+            "python exploit.py",
+            "git clone"
+        ];
+
+        const terminalBody = document.querySelector('.terminal-body');
+        const commandLine = document.querySelector('.command-line');
+
+        let currentCommand = 0;
+        let currentChar = 0;
+        let isTyping = true;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const prompt = document.querySelector('.prompt');
+            const cursor = document.querySelector('.cursor');
+
+            if (isTyping) {
+                if (currentChar < commands[currentCommand].length) {
+                    if (!commandLine.querySelector('.typed-text')) {
+                        const typedText = document.createElement('span');
+                        typedText.className = 'typed-text text-green-400';
+                        commandLine.insertBefore(typedText, cursor);
+                    }
+
+                    commandLine.querySelector('.typed-text').textContent += commands[currentCommand].charAt(currentChar);
+                    currentChar++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    isTyping = false;
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeWriter();
+                    }, 2000);
+                }
+            } else if (isDeleting) {
+                if (currentChar > 0) {
+                    commandLine.querySelector('.typed-text').textContent = commands[currentCommand].substring(0, currentChar - 1);
+                    currentChar--;
+                    setTimeout(typeWriter, 30);
+                } else {
+                    isDeleting = false;
+                    commandLine.querySelector('.typed-text').remove();
+                    currentCommand = (currentCommand + 1) % commands.length;
+                    isTyping = true;
+                    setTimeout(typeWriter, 500);
+                }
+            }
+        }
+
+        // Start the typing effect after a delay
+        setTimeout(typeWriter, 1500);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
