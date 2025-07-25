@@ -12,7 +12,7 @@ const blogsData = [
         "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "title": "Learning AI as a Cybersecurity Student: A Personal Journey-Day 1",
         "description": "This is the first post in a series where I’ll be sharing what I learn from an AI course I recently started."
-    }
+    },
     {
         "url": "https://medium.com/@arshathhaq97/detecting-and-classifying-cyberattacks-with-machine-learning-2f560855a0f6",
         "platform": "medium",
