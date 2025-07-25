@@ -16,7 +16,7 @@ const blogsData = [
     {
         "url": "https://medium.com/@arshathhaq97/detecting-and-classifying-cyberattacks-with-machine-learning-2f560855a0f6",
         "platform": "medium",
-        "image": "https://miro.medium.com/v2/resize:fit:640/format:webp/1*VyvbMKfvuum5Zb4ZniYuXw.png",
+        "image": "https://miro.medium.com/v2/resize:fit:640/format:webp/1*VyvbMKfvuum5Zb4ZniYuXw.png&auto=format&fit=crop&w=1470&q=80",
         "title": "Detecting and Classifying Cyberattacks with Machine Learning",
         "description": "A simple model with good data > a complex model with messy input."
     }
