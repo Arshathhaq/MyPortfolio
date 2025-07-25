@@ -1,6 +1,6 @@
 const myProjects = [
   {
-    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": "https://plus.unsplash.com/premium_vector-1726406986536-e69d61d275b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXIlMjBzZWN1cml0eXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "alt": "Project",
     "badge": "Web Security",
     "url":"https://github.com/Arshathhaq/personal_projects/tree/main/ClickJacking",    
@@ -9,7 +9,7 @@ const myProjects = [
     "tags": ["Postman", "Curl", "JavaScript"]
   },
   {
-    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": "https://plus.unsplash.com/premium_vector-1743661464442-fa5a43f0d7c4?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "alt": "Project",
     "badge": "Scripting",
       "url":"https://github.com/Arshathhaq/personal_projects/tree/main/Sockets",
@@ -18,7 +18,7 @@ const myProjects = [
     "tags": ["Python", "Sockets"]
   },
   {
-    "image": "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    "image": "https://plus.unsplash.com/premium_vector-1750338927296-b5d916fa1079?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VydmVyJTIwY2hhdCUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1632&q=80",
     "alt": "Project",
     "badge": "Scripting",
     "url":"https://github.com/Arshathhaq/personal_projects/tree/main/Sockets",    
