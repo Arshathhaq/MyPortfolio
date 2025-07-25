@@ -26,4 +26,13 @@ const myProjects = [
     "description": "Basic client-to-client chat system using Python sockets. It provides a simple yet effective way to establish direct communication between clients through a server, which acts as a message relay.",
     "tags": ["Python", "Sockets", "Requests", "json"]
   }
+  {
+    "image": "https://plus.unsplash.com/premium_vector-1711987827897-00999d8387af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1hY2hpbmUlMjBsZWFybmluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    "alt": "Project",
+    "badge": "Machine Learning",
+    "url":"https://github.com/Arshathhaq/Classifying_CyberAttacks_Using_ML",    
+    "title": "Detecting and Classifying Cyberattacks with Machine Learning",
+    "description": "This project explores how Machine Learning (ML) can be used to automatically detect and classify cyberattacks by analyzing network traffic data.",
+    "tags": ["Python", "sklearn", "Feature Extraction", "Networks"]
+  }
 ];
