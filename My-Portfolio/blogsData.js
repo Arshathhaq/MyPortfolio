@@ -9,7 +9,7 @@ const blogsData = [
     {
         "url": "https://medium.com/@arshathhaq97/learning-ai-as-a-cybersecurity-student-a-personal-journey-day-1-7e69d6785deb",
         "platform": "medium",
-        "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        "image": "https://plus.unsplash.com/premium_vector-1725517562607-6260dddfec24?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGFpfGVufDB8fDB8fHww&auto=format&fit=crop&w=1470&q=80",
         "title": "Learning AI as a Cybersecurity Student: A Personal Journey-Day 1",
         "description": "This is the first post in a series where I’ll be sharing what I learn from an AI course I recently started."
     },
