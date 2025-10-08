@@ -25,5 +25,5 @@ const aboutMe = {
     { "icon": "fas fa-bug", "label": "Vulnerability Research" },
     { "icon": "fas fa-bug", "label": "Cyber Security Analyst" }
   ],
-  "cvLink": "./AMH_BIK_CV.pdf"
+  "cvLink": "./amh_bik_cv.pdf"
 }
