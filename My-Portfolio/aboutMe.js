@@ -12,7 +12,7 @@ const aboutMe = {
     "Open for Intern / Thesis."
   ],
   "terminal": {
-    "whoami": "MSc Cyber Security Student | SOC & Incident Response | SIEM | Penetration Testing | Application & Network Security | ISC2 CC | ML for Security",
+    "whoami": "MSc Cyber Security Student | SOC & Incident Response | SIEM | Penetration Testing | Application & Network Security | ML for Security",
     "education": [
       "MSc Cyber Security - Hochschule der Bayerischen Wirtschaft (2025 - Ongoing)",
       "Practical Ethical Hacking(PEH) - TCM Security Academy",
