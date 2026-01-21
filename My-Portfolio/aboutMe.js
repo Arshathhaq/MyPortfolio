@@ -1,14 +1,18 @@
 
 const aboutMe = {
   "sectionTitle": "ABOUT ME",
-  "subtitle": "CYBERSECURITY STUDENT",
+  "subtitle": "Ms. CYBERSECURITY STUDENT",
   "profileImage": "./ME-W.png",
   "description": [
-    "MSc Cyber Security Student | SOC & Incident Response | SIEM | Penetration Testing | Application & Network Security | ISC2 CC | ML for Security",
-    "My background as a Software Security Analyst and Full Stack Developer."
+    "Cybersecurity professional with hands-on experience in SIEM operations, incident response, vulnerability assessment, and application security. \
+    Strong foundation in network security, cryptography, secure system design, and threat modeling, supported by practical labs and real-world projects.",
+    "My background as a Software Security Analyst and Full Stack Developer.", 
+    "Actively developing skills in SOC operations and exploring cloud security, automotive / OT security.",
+    "Curious, adaptable, and continuously learning to protect critical and cyber-physical systems.",
+    "Open for Intern / Thesis."
   ],
   "terminal": {
-    "whoami": "Ms. Cyber Security Student",
+    "whoami": "MSc Cyber Security Student | SOC & Incident Response | SIEM | Penetration Testing | Application & Network Security | ISC2 CC | ML for Security",
     "education": [
       "MSc Cyber Security - Hochschule der Bayerischen Wirtschaft (2025 - Ongoing)",
       "Practical Ethical Hacking(PEH) - TCM Security Academy",
